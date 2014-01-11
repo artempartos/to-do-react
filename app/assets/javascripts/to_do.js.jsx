@@ -18,11 +18,20 @@ $(document).ready(function() {
             this.setState({items: items, text: "", id: this.state.id + 1})
         },
 
-        handleItemClick: function(item) {
+        changeItemStatus: function(item, status) {
             items = this.state.items;
             id = _.findKey(items, {id: item.id});
-            items[id].status = "editable";
-            this.forceUpdate();
+            items[id].status = status;
+            this.setState({items: items});
+        },
+
+        handleItemEditText: function(item, text) {
+            items = this.state.items;
+            id = _.findKey(items, {id: item.id});
+            items[id].status = "uncompleted";
+            items[id].text = text;
+            this.setState({items: items});
+//            this.forceUpdate();
         },
 
         handleItemRemove: function(item) {
@@ -39,7 +48,13 @@ $(document).ready(function() {
                         <input onChange={this.onChange} value={this.state.text} type="text" id="item_name" className="form-control"/>
                         <button className="btn btn-success">Создать</button>
                     </form>
-                    <TodoList items={this.state.items} onItemClick={this.handleItemClick} onItemRemove={this.handleItemRemove}/>
+                    <TodoList
+                        items={this.state.items}
+                        changeItemStatus={this.changeItemStatus}
+                        onItemRemove={this.handleItemRemove}
+                        handleItemEditText={this.handleItemEditText}
+                    />
+
                 </div>
                 );
         }

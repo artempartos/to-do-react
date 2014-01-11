@@ -10,22 +10,38 @@
             this.setState({text: this.props.item.text});
         },
 
+        componentDidUpdate: function(){
+            if (this.props.item.status == "editable") {
+                this.refs.MyInput.getDOMNode().focus()
+            }
+        },
+
         onRemove: function() {
-          this.props.onItemRemove(this.props.item)
+          this.props.onItemRemove(this.props.item);
         },
 
         onItemClick: function() {
-          this.props.onItemClick(this.props.item);
+            this.props.changeItemStatus(this.props.item, "editable");
         },
 
         onItemChange: function(e) {
-          this.setState({text: e.target.value})
+            this.setState({text: e.target.value})
+        },
+
+        onEnter: function(e) {
+            e.preventDefault();
+            this.props.handleItemEditText(this.props.item, this.state.text)
+        },
+
+        onClose: function(e) {
+            e.preventDefault();
+            this.props.changeItemStatus(this.props.item, "uncompleted");
         },
 
         render: function() {
           if (this.props.item.status == "uncompleted") {
               temp = (
-                  <div>
+                  <div className="todoItemDiv">
                       <span className="label label-warning" onClick={this.onItemClick}>
                       {this.props.item.text}
                       </span>
@@ -37,8 +53,8 @@
 
             if (this.props.item.status == "deleted") {
                 temp = (
-                    <div>
-                        <span className="label label-danger" onClick={this.props.onItemClick}>
+                    <div className="todoItemDiv">
+                        <span className="label label-danger">
                       {this.props.item.text}
                         </span>
                     </div>
@@ -48,8 +64,19 @@
 
             if (this.props.item.status == "editable") {
                 temp = (
-                    <div>
-                        <input className="" value={this.state.text} onChange={this.onItemChange}/>
+                    <div className="todoItemDiv">
+                        <form
+                            onSubmit={this.onEnter}
+                            onBlur={this.onClose}
+                            className = "form-inline form-horizontal">
+
+                            <input
+                                ref='MyInput'
+                                value={this.state.text}
+                                onChange={this.onItemChange}
+
+                            />
+                        </form>
                     </div>
                 )
 
@@ -58,4 +85,3 @@
 
         }
     });
-
