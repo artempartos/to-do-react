@@ -3,5 +3,6 @@
 //= require jquery.ui.all
 //= require react
 //= require bootstrap
+//= require keymaster
 //= require to_do
 //= require_tree .

@@ -60,8 +60,12 @@ GEM
     jquery-ui-rails (4.1.1)
       railties (>= 3.1.0)
     json (1.8.1)
+    keymaster-rails (1.0.2)
+      railties (>= 3.0.0)
     kgio (2.8.1)
     libv8 (3.11.8.17)
+    lodash-rails (2.4.0)
+      railties (>= 3.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -138,6 +142,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-rails
+  keymaster-rails
+  lodash-rails
   rails (= 4.0.2)
   react-rails
   sass-rails (~> 4.0.0)
