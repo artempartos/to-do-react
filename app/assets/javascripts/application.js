@@ -3,5 +3,5 @@
 //= require jquery.ui.all
 //= require react
 //= require bootstrap
-//= require my_react
+//= require to_do
 //= require_tree .
