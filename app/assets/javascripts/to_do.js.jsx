@@ -19,7 +19,10 @@ $(document).ready(function() {
         },
 
         handleItemClick: function(item) {
-            item.status = "editable"
+            items = this.state.items;
+            id = _.findKey(items, {id: item.id});
+            items[id].status = "editable";
+            this.forceUpdate();
         },
 
         handleItemRemove: function(item) {
