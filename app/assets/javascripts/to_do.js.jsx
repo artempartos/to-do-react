@@ -18,21 +18,25 @@ $(document).ready(function() {
             this.setState({items: items, text: ""})
         },
 
+        handleItemClick: function(e) {
+            console.log(e.target)
+        },
+
         render: function() {
             return (
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.onChange} value={this.state.text} className="" type="text" id="item_name" className="form-control"/>
-                        <button className="btn btn-primary">Создать</button>
+                    <form onSubmit={this.handleSubmit} className = "form-inline form-horizontal" id = 'todoForm'>
+                        <input onChange={this.onChange} value={this.state.text} type="text" id="item_name" className="form-control"/>
+                        <button className="btn btn-success">Создать</button>
                     </form>
-                    <TodoList items={this.state.items}/>
+                    <TodoList items={this.state.items} onItemClick={this.handleItemClick} />
                 </div>
                 );
         }
     });
 
 
-    React.renderComponent(<TodoApp name="Partos" />, document.getElementById("todo"));
+    React.renderComponent(<TodoApp />, document.getElementById("todo"));
 
 });
 

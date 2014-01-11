@@ -4,7 +4,7 @@
 
         render: function() {
           return (
-            <li>{this.props.item}</li>
+            <li onClick={this.props.onItemClick}>{this.props.item}</li>
           )
         }
     });
