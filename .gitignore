@@ -1,1 +1,29 @@
-.idea/
+# Ignore vim swap files
+*.swp
+*.swo
+*.swn
+
+# Ignore bundler config
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+moviesdb_development
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+/coverage
+/test/reports
+/config/database.yml
+/config/database.yml.dev
+/config/sidekiq.dev.yml
+/public/system
+/public/uploads
+/public/image
+/vendor/cache
+/.idea
+/doc
+.yardoc
+/vendor/cache
+dump.rdb
