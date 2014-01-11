@@ -25,6 +25,7 @@ $(document).ready(function() {
                         <input onChange={this.onChange} value={this.state.text} className="" type="text" id="item_name" className="form-control"/>
                         <button className="btn btn-primary">Создать</button>
                     </form>
+                    <TodoList items={this.state.items}/>
                 </div>
                 );
         }

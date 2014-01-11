@@ -5,5 +5,7 @@
 //= require bootstrap
 //= require keymaster
 //= require lodash
+//= require to_do_list_item
+//= require to_do_list
 //= require to_do
 //= require_tree .
