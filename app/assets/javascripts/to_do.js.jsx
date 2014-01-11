@@ -5,7 +5,7 @@ $(document).ready(function() {
     var TodoApp = React.createClass({
 
         getInitialState: function() {
-            return {items: [], text: ''};
+            return {items: [], text: '', id: 0};
         },
 
         onChange: function(e) {
@@ -14,12 +14,17 @@ $(document).ready(function() {
 
         handleSubmit: function(e) {
             e.preventDefault();
-            var items =  this.state.items.concat([this.state.text]);
-            this.setState({items: items, text: ""})
+            var items =  this.state.items.concat([{text: this.state.text, id: this.state.id}]);
+            this.setState({items: items, text: "", id: this.state.id + 1})
         },
 
         handleItemClick: function(e) {
             console.log(e.target)
+        },
+
+        handleItemRemove: function(item) {
+            items = _.without(this.state.items, item);
+            this.setState({items: items});
         },
 
         render: function() {
@@ -29,7 +34,7 @@ $(document).ready(function() {
                         <input onChange={this.onChange} value={this.state.text} type="text" id="item_name" className="form-control"/>
                         <button className="btn btn-success">Создать</button>
                     </form>
-                    <TodoList items={this.state.items} onItemClick={this.handleItemClick} />
+                    <TodoList items={this.state.items} onItemClick={this.handleItemClick} onItemRemove={this.handleItemRemove}/>
                 </div>
                 );
         }
