@@ -4,5 +4,6 @@
 //= require react
 //= require bootstrap
 //= require keymaster
+//= require lodash
 //= require to_do
 //= require_tree .
