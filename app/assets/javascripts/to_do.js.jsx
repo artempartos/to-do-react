@@ -14,17 +14,19 @@ $(document).ready(function() {
 
         handleSubmit: function(e) {
             e.preventDefault();
-            var items =  this.state.items.concat([{text: this.state.text, id: this.state.id}]);
+            var items =  this.state.items.concat([{text: this.state.text, id: this.state.id, status: "uncompleted"}]);
             this.setState({items: items, text: "", id: this.state.id + 1})
         },
 
-        handleItemClick: function(e) {
-            console.log(e.target)
+        handleItemClick: function(item) {
+            item.status = "editable"
         },
 
         handleItemRemove: function(item) {
             items = _.without(this.state.items, item);
-            this.setState({items: items});
+            item.status = "deleted"
+            its = items.concat([item]);
+            this.setState({items: its});
         },
 
         render: function() {
